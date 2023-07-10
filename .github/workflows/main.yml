@@ -19,9 +19,11 @@ jobs:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
         
-      - name: Save result in Artifact
-        run: mkdir -p path/to/artifact | python -c "import sys; print(sys.version)" > path/to/artifact/result.txt
+      - name: Make artifact directory
+        run: mkdir -p path/to/artifact
+      - name : Save result in Artifact
+        run : python -c "import sys; print(sys.version)" > path/to/artifact/artifact.txt
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: path/to/artifact/result.txt
+          path: path/to/artifact/artifact.txt
